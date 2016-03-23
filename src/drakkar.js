@@ -7,6 +7,17 @@ const globp = pify(glob);
 const marked = require('marked');
 const fs = require('fs');
 const fsp = pify(fs);
+const highlight = require('highlight.js');
+
+marked.setOptions({
+    highlight: function (code, lang) {
+        var output = code;
+        if (lang) {
+            output = highlight.highlightAuto(output).value;
+        }
+        return '<div class="hljs">' + output + '</div>';
+    }
+});
 
 module.exports = Drakkar;
 

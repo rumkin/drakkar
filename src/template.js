@@ -12,25 +12,6 @@ module.exports = (function(){
                 ${input.title}
                 </title>
                 <style>
-                .drk-page {
-                    font-family: sans-serif;
-                }
-
-                .drk-sidebar {
-                    position: fixed;
-                    overflow: auto;
-                    width: 240px;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    border-right: 1px solid #eee;
-                    padding: 10px;
-                }
-
-                .drk-doc {
-                    margin-left: 260px;
-                }
-
                 ${style}
                 </style>
             </head>

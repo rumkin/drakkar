@@ -6,6 +6,14 @@ This is an example markdown page.
 Block of code
 ```
 
+JS code highlighted:
+
+```javascript
+var f = function() {
+    console.log('Hello world');
+};
+```
+
 ### Tables
 
 This is basic table example.
