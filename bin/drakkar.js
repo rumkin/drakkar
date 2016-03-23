@@ -14,10 +14,7 @@ var args = argentum.parse(argv, {
         output: path.join(process.cwd(), 'drakkar'),
     },
     aliases: {
-        v: 'verbose',
         d: 'debug',
-        c: 'config',
-        o: 'output',
     }
 });
 
@@ -27,9 +24,8 @@ const drakkar = new Drakkar({
     verbose: args.verbose
 });
 
-drakkar.compileDir(argv[0] || process.cwd(), args.output).then((files) => {
-    console.log('files', files);
-}).catch(error => {
+drakkar.compileDir(argv[0] || process.cwd(), args.output)
+.catch(error => {
     if (DEBUG) {
         console.error(error.stack);
     } else {

@@ -1,6 +1,6 @@
 {
   "name": "drakkar",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Markdown documentation generator",
   "bin": {
     "drakkar": "drakkar.js"
@@ -35,5 +35,6 @@
       "marked": "^0.3.5",
       "pify": "^2.3.0",
       "underscore": "^1.8.3"
-  }
+  },
+  "bin": "bin/drakkar.js"
 }

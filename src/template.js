@@ -45,16 +45,14 @@ module.exports = (function(){
                 <script>
                     const DRAKKAR_FILE = ${JSON.stringify(input.file)};
 
-                    var links = document.querySelectorAll('a');
+                    var links = document.querySelectorAll('.drk-sidebar a');
                     var link;
                     var i = -1;
                     var l = links.length
                     while(++i < l) {
                         link = links[i];
-                        console.log(i, link, link.href.slice(-DRAKKAR_FILE.length), DRAKKAR_FILE);
 
-
-                        if (link.href.slice(-DRAKKAR_FILE.length) === DRAKKAR_FILE) {
+                        if (link.getAttribute('href') === DRAKKAR_FILE) {
                             link.style.fontWeight = 'bold';
                         }
                     }
