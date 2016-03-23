@@ -1,0 +1,38 @@
+a {
+    color: #03f;
+}
+
+.drk-doc pre code {
+    display: block;
+    background-color: #eee;
+    padding: 20px;
+}
+
+.drk-doc {
+    padding: 0 20px;
+}
+
+.drk-doc p, .drk-doc table {
+    max-width: 960px;
+}
+
+.drk-doc > h1:first-child {
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+    font-weight: normal;
+}
+
+.drk-doc table {
+    border: 1px solid #eee;
+    border-collapse: collapse;
+}
+
+.drk-doc table th {
+    padding: 7px 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.drk-doc table td {
+    padding: 7px 5px;
+    border-bottom: 1px solid #eee;
+}

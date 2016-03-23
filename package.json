@@ -1,0 +1,39 @@
+{
+  "name": "drakkar",
+  "version": "0.1.0",
+  "description": "Markdown documentation generator",
+  "bin": {
+    "drakkar": "drakkar.js"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rumkin/drakkar.git"
+  },
+  "keywords": [
+    "markdown",
+    "docs",
+    "site-generator",
+    "doc-generator"
+  ],
+  "author": "rumkin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rumkin/drakkar/issues"
+  },
+  "homepage": "https://github.com/rumkin/drakkar#readme",
+  "main": "src/drakkar.js",
+  "dependencies": {
+      "argentum": "^0.4.0",
+      "glob": "^7.0.3",
+      "marked": "^0.3.5",
+      "pify": "^2.3.0",
+      "underscore": "^1.8.3"
+  }
+}
