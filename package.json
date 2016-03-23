@@ -1,6 +1,6 @@
 {
   "name": "drakkar",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Markdown documentation generator",
   "bin": "bin/drakkar.js",
   "directories": {

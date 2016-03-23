@@ -20,7 +20,9 @@ module.exports = (function(){
                 ${input.sidebar}
                 </div>
                 <div class="drk-doc">
-                ${input.content}
+                    <div class="drk-doc-content">
+                        ${input.content}
+                    </div>
                 </div>
                 <!-- ${input.file} -->
                 <script>
