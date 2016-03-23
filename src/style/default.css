@@ -19,6 +19,15 @@ a {
     padding: 10px;
 }
 
+.drk-sidebar > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.drk-sidebar > ul > li > a {
+    display: block;
+}
+
 .drk-doc {
     margin-left: 260px;
     padding: 0 20px;
