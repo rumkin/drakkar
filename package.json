@@ -6,7 +6,9 @@
   "directories": {
     "example": "example"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mime": "^1.3.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
