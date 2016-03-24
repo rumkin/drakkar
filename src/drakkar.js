@@ -77,7 +77,7 @@ Drakkar.prototype.compileDir = function (sources, output){
                         .then(content => marked(content, {renderer: this.renderer}))
                         .then(content => this.template({
                             source: file,
-                            file: file.slice(0, -3) + '.html',
+                            file: '/' + file.slice(0, -3) + '.html',
                             title: path.basename(file, '.md').replace(/(^|-|_)(\w)/, (v, s, d) => {
                                 return d.toUpperCase();
                             }),
