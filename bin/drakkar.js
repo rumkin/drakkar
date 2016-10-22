@@ -5,6 +5,7 @@
 const argentum = require('argentum');
 const _ = require('underscore');
 const Drakkar = require('..');
+const fs = require('fs');
 const path = require('path');
 
 var argv = process.argv.slice(2);
@@ -24,7 +25,13 @@ const drakkar = new Drakkar({
     verbose: args.verbose
 });
 
-drakkar.compileDir(argv[0] || process.cwd(), args.output)
+const output = path.resolve(argv[1] || 'www');
+
+if (! fs.existsSync(output)) {
+    fs.mkdirSync(output);
+}
+
+drakkar.compileDir(argv[0] || process.cwd(), output)
 .catch(error => {
     if (DEBUG) {
         console.error(error.stack);

@@ -14,6 +14,7 @@ module.exports = (function(){
                 <style>
                 ${style}
                 </style>
+                <meta http-equiv="Content-Type" value="text/html;charset=utf-8"/>
             </head>
             <body class="drk-page">
                 <div class="drk-sidebar">

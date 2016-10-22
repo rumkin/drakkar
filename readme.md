@@ -1,7 +1,7 @@
 # Drakkar
 
 Drakkar is pretty simple markdown site generator with only one feature. This
-feature is support of sidebar document named as `_.md` which is visible on each
+feature is support of menu document named `_.md` which is visible on each
 page as a sidebar.
 
 ## Installation
@@ -13,9 +13,9 @@ npm install drakkar -g
 
 ## Usage
 
-Drakkar has one arguments is sources directory and optional `output` parameter
-which specify output location. Default is `$CWD`.
+Drakkar has two arguments. The first is sources directory (default is `.`) and destination
+directory (default is `www`).
 
 ```
-drakkar docs --output=site
+drakkar docs output
 ```
