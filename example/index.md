@@ -22,3 +22,12 @@ This is basic table example.
 |:-----------|:-----------|
 | Item One   | Item Two   |
 | Item Three | Item Four  |
+
+
+### Extensions
+
+CSV Plugin:
+
+@csv(ID, Name)
+  1,Alice
+  2,Bob

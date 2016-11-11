@@ -8,6 +8,7 @@ const marked = require('marked');
 const fs = require('fs');
 const fsp = pify(fs);
 const highlight = require('highlight.js');
+const csv = require('csv-string');
 
 marked.setOptions({
     highlight: function (code, lang) {
@@ -27,8 +28,20 @@ function Drakkar(options) {
     var opts = Object.assign({}, options);
 
     this.verbose = !! opts.verbose;
-    this.renderer = options.renderer;
+    this.renderer = options.renderer || new marked.Renderer();
     this.template = options.template || this.template;
+
+    Object.assign(this.renderer.plugins, {
+        csv(params, block) {
+            let head = params.split(/\s*,\s*/).map(escape);
+            let table = csv.parse(block);
+
+            return `<table><thead><tr><th>${head.join('</th><th>')}</th></tr></thead><tbody><tr>${table.map((row) => '<td>' + row.map(escape).join('</td><td>') + '</td>').join('</tr><tr>')}</tr></tbody></table>`;
+        },
+        iframe(params) {
+            return `<iframe src="${escape(params)}"></iframe>`;
+        },
+    });
 }
 
 Drakkar.prototype.template = drakkarTemplate;
@@ -58,7 +71,11 @@ Drakkar.prototype.compileDir = function (sources, output){
             if (sidebar) {
                 promise = fsp.readFile(path.join(sources, '_.md'), 'utf8')
                 .then(content => {
-                    return marked(content, {renderer: this.renderer});
+                    return marked(content, {
+                        gfm: true,
+                        plugins: true,
+                        renderer: this.renderer,
+                    });
                 });
             } else {
                 promise = Promise.resolve();
@@ -74,7 +91,11 @@ Drakkar.prototype.compileDir = function (sources, output){
                     } else {
                         var dest = path.join(output, file.slice(0, -3) + '.html');
                         return fsp.readFile(path.join(sources, file), 'utf8')
-                        .then(content => marked(content, {renderer: this.renderer}))
+                        .then(content => marked(content, {
+                            plugins: true,
+                            gfm: true,
+                            renderer: this.renderer
+                        }))
                         .then(content => this.template({
                             source: file,
                             file: '/' + file.slice(0, -3) + '.html',
@@ -131,4 +152,13 @@ function copyFile(source, target) {
         wr.on('finish', resolve);
         rd.pipe(wr);
     });
+}
+
+function escape(html, encode) {
+  return html
+    .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }

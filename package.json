@@ -31,9 +31,10 @@
   "main": "src/drakkar.js",
   "dependencies": {
     "argentum": "^0.4.0",
+    "csv-string": "^2.3.0",
     "glob": "^7.0.3",
     "highlight.js": "^9.2.0",
-    "marked": "^0.3.5",
+    "marked": "github:rumkin/marked",
     "pify": "^2.3.0",
     "underscore": "^1.8.3"
   }

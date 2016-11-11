@@ -13,8 +13,7 @@ npm install drakkar -g
 
 ## Usage
 
-Drakkar has two arguments. The first is sources directory (default is `.`) and destination
-directory (default is `www`).
+Drakkar has two arguments. The first is sources directory (default is `.`) and the second is destination directory (default is `www`).
 
 ```
 drakkar docs output
