@@ -11,6 +11,23 @@ Install with npm
 npm install drakkar -g
 ```
 
+## Structure
+
+Default site structure should contain `_.md` document in the root directory.
+This file would be used as sidebar.
+
+FS layout example:
+
+```
+.
+|-- drakkar.js
+|-- index.md
+|-- license.md
+|-- _.md
+`-- sub
+    `-- doc.md
+```
+
 ## Usage
 
 Drakkar has two arguments. The first is sources directory (default is `.`) and the second is output directory (default is `www-docs`).
