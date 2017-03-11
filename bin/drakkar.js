@@ -2,31 +2,30 @@
 
 'use strict';
 
-const argentum = require('argentum');
-const _ = require('underscore');
 const Drakkar = require('..');
+const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
+const commander = require('commander');
 
-let argv = process.argv.slice(2);
-let args = argentum.parse(argv, {
-    defaults: {
-        debug: process.env.DEBUG === '1',
-        output: path.join(process.cwd(), 'drakkar'),
-    },
-    aliases: {
-        d: 'debug',
-    }
-});
+commander
+    .description('Static site generator')
+    .usage('[options] <source>')
+    .option('-d, --debug', 'Debug mode')
+    .option('-v, --verbose', 'Verbose output')
+    .option('-o, --output [output]', 'Output directory. Default is `www-docs`')
+    .parse(process.argv);
 
-const DEBUG = args.debug;
+const DEBUG = commander.hasOwnProperty('debug')
+ ? commander.debug
+ : process.env.DEBUG === '1';
 
 const drakkar = new Drakkar({
-    verbose: args.verbose
+    verbose: commander.verbose
 });
 
-const sources = argv[0] || process.cwd();
-const output = path.resolve(argv[1] || 'www-docs');
+const sources = commander.args[0] || process.cwd();
+const output = path.resolve(commander.output || 'www-docs');
 
 if (! fs.existsSync(output)) {
     fs.mkdirSync(output);
@@ -45,6 +44,11 @@ if (fs.existsSync(modScript)) {
 }
 
 drakkar.compileDir(sources, output)
+.then(() => {
+    if (commander.verbose) {
+        console.log('Documentation generated in "%s".', chalk.bold(output));
+    }
+})
 .catch(error => {
     if (DEBUG) {
         console.error(error.stack);

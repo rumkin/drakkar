@@ -16,7 +16,11 @@ npm install drakkar -g
 Drakkar has two arguments. The first is sources directory (default is `.`) and the second is output directory (default is `www-docs`).
 
 ```
-drakkar [sources] [output]
+drakkar [options] [source]
+
+-v,--verbose Verbose output
+-d,--debug   Debug
+-o,--output  Output directory. Default is `www-docs`.
 ```
 
 If there is `drakkar.js` in sources dir then it will be used to modify drakkar
