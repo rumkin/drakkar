@@ -11,6 +11,7 @@ const highlight = require('highlight.js');
 const csv = require('csv-string');
 
 marked.setOptions({
+    plugins: true,
     highlight: function (code, lang) {
         var output = code;
         if (lang) {
@@ -43,6 +44,11 @@ function Drakkar(options) {
         },
     });
 }
+
+Drakkar.prototype.use = function(fn) {
+    fn.call(this);
+    return this;
+};
 
 Drakkar.prototype.template = drakkarTemplate;
 

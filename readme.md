@@ -13,8 +13,25 @@ npm install drakkar -g
 
 ## Usage
 
-Drakkar has two arguments. The first is sources directory (default is `.`) and the second is destination directory (default is `www`).
+Drakkar has two arguments. The first is sources directory (default is `.`) and the second is output directory (default is `www-docs`).
 
 ```
-drakkar docs output
+drakkar [sources] [output]
 ```
+
+If there is `drakkar.js` in sources dir then it will be used to modify drakkar
+instance.
+
+Modifier script example:
+
+```javascript
+module.exports = function() {
+    this.renderer.plugins.date = function(date) {
+        return new Date();
+    };
+}
+```
+
+## License
+
+MIT.
